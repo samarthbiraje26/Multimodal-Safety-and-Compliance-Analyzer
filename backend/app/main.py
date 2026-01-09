@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import text, image, audio, video
+from app.routes import text, image, audio, video
 
 app = FastAPI(title="Multimodal Safety & Compliance Analyzer")
 
