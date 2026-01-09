@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File
 import shutil
-from models.video_analyzer import analyze_video
+from app.models.video_analyzer import analyze_video
 
 router = APIRouter()
 

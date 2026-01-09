@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File
-from models.image_analyzer import analyze_image
+from app.models.image_analyzer import analyze_image
 
 router = APIRouter()
 

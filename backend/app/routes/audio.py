@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File
-from models.audio_analyzer import analyze_audio
+from app.models.audio_analyzer import analyze_audio
 
 router = APIRouter()
 
