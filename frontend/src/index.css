@@ -1,160 +1,158 @@
+/* =========================
+   Global Reset & Base
+========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== Background ===== */
 body {
-  min-height: 100vh;
-  font-family: "Inter", "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #ffffff;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #1f2937;
+  line-height: 1.6;
 }
 
-/* ===== Navbar ===== */
+/* =========================
+   Navbar
+========================= */
 .nav {
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 16px 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 14px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .nav h3 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  color: #111827;
 }
 
 .nav a {
-  color: #ffffff;
-  margin-left: 22px;
+  margin-left: 20px;
   text-decoration: none;
-  font-size: 15px;
-  position: relative;
-  transition: color 0.3s;
-}
-
-.nav a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background: #00e0ff;
-  bottom: -6px;
-  left: 0;
-  transition: width 0.3s ease;
-}
-
-.nav a:hover::after {
-  width: 100%;
+  font-size: 14px;
+  color: #374151;
+  transition: color 0.2s ease;
 }
 
 .nav a:hover {
-  color: #00e0ff;
+  color: #2563eb;
 }
 
-/* ===== Page Container ===== */
+/* =========================
+   Page Container
+========================= */
 .container {
   max-width: 900px;
-  margin: 60px auto;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* ===== Headings ===== */
+/* =========================
+   Headings & Text
+========================= */
 h1 {
-  font-size: 36px;
+  font-size: 30px;
   margin-bottom: 12px;
+  color: #111827;
 }
 
 h2 {
-  font-size: 28px;
-  margin-bottom: 16px;
+  font-size: 24px;
+  margin-bottom: 18px;
+  color: #111827;
 }
 
 p {
-  font-size: 16px;
-  opacity: 0.85;
-  margin-bottom: 25px;
+  font-size: 15px;
+  color: #4b5563;
+  margin-bottom: 24px;
 }
 
-/* ===== Inputs ===== */
+/* =========================
+   Inputs
+========================= */
 textarea,
 input[type="file"] {
   width: 100%;
-  padding: 14px;
-  margin-bottom: 18px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  color: #ffffff;
-  font-size: 15px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  color: #111827;
   outline: none;
 }
 
-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+textarea {
+  resize: vertical;
 }
 
 textarea:focus,
 input[type="file"]:focus {
-  border-color: #00e0ff;
+  border-color: #2563eb;
 }
 
-/* ===== Buttons ===== */
+/* =========================
+   Buttons
+========================= */
 button {
-  padding: 14px 30px;
-  border-radius: 30px;
-  border: none;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
+  background-color: #2563eb;
   color: #ffffff;
-  background: linear-gradient(135deg, #00e0ff, #0077ff);
-  box-shadow: 0 10px 30px rgba(0, 224, 255, 0.35);
-  transition: all 0.3s ease;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(0, 224, 255, 0.6);
+  background-color: #1e40af;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
-/* ===== Result Box ===== */
+/* =========================
+   Result Box
+========================= */
 pre {
-  margin-top: 25px;
-  padding: 18px;
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.45);
-  font-size: 14px;
+  margin-top: 24px;
+  padding: 16px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #111827;
   overflow-x: auto;
-  border-left: 4px solid #00e0ff;
 }
 
-/* ===== Responsive ===== */
+/* =========================
+   Responsive
+========================= */
 @media (max-width: 768px) {
   .container {
-    margin: 30px 16px;
-    padding: 25px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  h2 {
-    font-size: 22px;
+    margin: 24px 14px;
+    padding: 24px;
   }
 
   .nav {
     flex-direction: column;
+    align-items: flex-start;
     gap: 10px;
+  }
+
+  .nav a {
+    margin-left: 0;
+    margin-right: 16px;
   }
 }
