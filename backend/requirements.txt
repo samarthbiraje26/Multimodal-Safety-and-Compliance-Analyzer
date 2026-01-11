@@ -3,3 +3,7 @@ uvicorn
 python-multipart
 pillow
 opencv-python
+torch
+transformers
+torchaudio
+numpy
