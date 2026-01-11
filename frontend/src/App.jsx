@@ -6,6 +6,11 @@ import Image from "./pages/Image";
 import Audio from "./pages/Audio";
 import Video from "./pages/Video";
 
+
+export default function App() {
+  return <h1>App is rendering</h1>;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
