@@ -1,9 +1,13 @@
+from app.models.model_loader import text_classifier
+
 def analyze_text(text: str):
-    unsafe_keywords = ["violence", "hate", "kill", "weapon"]
-    for word in unsafe_keywords:
-        if word in text.lower():
-            return {
-                "safe": False,
-                "reason": f"Detected unsafe keyword: {word}"
-            }
-    return {"safe": True, "reason": "Text is compliant"}
+    result = text_classifier(text)[0]
+
+    label = result["label"]
+    score = float(result["score"])
+
+    return {
+        "safe": label == "LABEL_0",
+        "label": label,
+        "confidence": round(score, 3)
+    }
