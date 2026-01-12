@@ -1,13 +1,14 @@
 from fastapi import APIRouter, UploadFile, File
-import shutil
-from app.models.video_analyzer import analyze_video
+from app.analyzers.video_analyzer import analyze_video
+from app.utils.sms_alert import send_sms
 
-router = APIRouter()
+router = APIRouter(prefix="/video", tags=["Video"])
 
 @router.post("/analyze")
-async def analyze(file: UploadFile = File(...)):
-    path = f"temp_{file.filename}"
-    with open(path, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
+async def analyze_video_route(file: UploadFile = File(...)):
+    result = analyze_video(file)
 
-    return analyze_video(path)
+    if result["status"] == "DANGER":
+        send_sms(f"🚨 VIDEO EMERGENCY DETECTED: {result['label']}")
+
+    return result
