@@ -10,3 +10,6 @@ class TextInput(BaseModel):
 @router.post("/analyze")
 def analyze(data: TextInput):
     return analyze_text(data.text)
+
+if result["status"] == "DANGER":
+    send_sms(f"🚨 TEXT EMERGENCY DETECTED: {result['label']}")
