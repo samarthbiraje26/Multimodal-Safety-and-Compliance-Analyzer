@@ -1,15 +1,8 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
-from app.models.text_analyzer import analyze_text
+from app.analyzers.text_analyzer import analyze_text
 
-router = APIRouter()
-
-class TextInput(BaseModel):
-    text: str
+router = APIRouter(prefix="/text", tags=["Text"])
 
 @router.post("/analyze")
-def analyze(data: TextInput):
-    return analyze_text(data.text)
-
-if result["status"] == "DANGER":
-    send_sms(f"🚨 TEXT EMERGENCY DETECTED: {result['label']}")
+def analyze_text_route(data: dict):
+    return analyze_text(data["text"])
