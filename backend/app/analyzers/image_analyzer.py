@@ -1,12 +1,19 @@
 from PIL import Image
 from io import BytesIO
 
-async def analyze_image(file):
-    contents = await file.read()        # ✅ await coroutine
-    image = Image.open(BytesIO(contents)).convert("RGB")
+def analyze_image(file_bytes: bytes):
+    image = Image.open(BytesIO(file_bytes)).convert("RGB")
 
-    # TODO: run your ML model here
+    # 🔴 TEMP LOGIC (Replace with ML later)
+    width, height = image.size
+
+    if width > 500:
+        return {
+            "status": "DANGER",
+            "message": "Danger detected in image"
+        }
+
     return {
-        "status": "success",
-        "message": "Image analyzed successfully"
+        "status": "SAFE",
+        "message": "No danger detected"
     }
