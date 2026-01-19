@@ -1,33 +1,15 @@
-import torch
-from transformers import (
-    pipeline,
-    CLIPProcessor,
-    CLIPModel,
-    WhisperProcessor,
-    WhisperForConditionalGeneration
-)
+# backend/app/models/model_loader.py
 
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+def text_classifier(text: str):
+    if "help" in text.lower() or "danger" in text.lower():
+        return {"status": "DANGER", "message": "Emergency text detected"}
+    return {"status": "SAFE", "message": "No danger detected"}
 
-# TEXT – Toxicity
-text_classifier = pipeline(
-    "text-classification",
-    model="unitary/toxic-bert",
-    device=0 if DEVICE == "cuda" else -1
-)
+def image_model(_):
+    return {"status": "SAFE", "message": "Image looks safe"}
 
-# IMAGE + VIDEO – CLIP
-clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(DEVICE)
-clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+def audio_model(_):
+    return {"status": "SAFE", "message": "Audio looks safe"}
 
-# AUDIO – Whisper
-whisper_processor = WhisperProcessor.from_pretrained("openai/whisper-small")
-whisper_model = WhisperForConditionalGeneration.from_pretrained(
-    "openai/whisper-small"
-).to(DEVICE)
-
-# Dummy example
-text_classifier = lambda x: {"status": "SAFE", "message": "No danger detected"}
-image_model = lambda x: {"status": "SAFE", "message": "No danger detected"}
-audio_model = lambda x: {"status": "SAFE", "message": "No danger detected"}
-video_model = lambda x: {"status": "SAFE", "message": "No danger detected"}
+def video_model(_):
+    return {"status": "SAFE", "message": "Video looks safe"}
