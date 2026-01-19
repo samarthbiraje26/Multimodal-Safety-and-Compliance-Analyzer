@@ -1,25 +1,18 @@
-import { useState } from "react";
-import { api } from "../services/api";
+const [result, setResult] = useState("");
 
-export default function Image() {
-  const [file, setFile] = useState(null);
-  const [result, setResult] = useState(null);
+const handleAnalyze = async () => {
+  const formData = new FormData();
+  formData.append("file", selectedFile);
 
-  const analyze = async () => {
-    const formData = new FormData();
-    formData.append("file", file);
+  try {
+    const res = await fetch("http://127.0.0.1:8000/api/image/analyze", {
+      method: "POST",
+      body: formData,
+    });
 
-    const res = await api.post("/image/analyze", formData);
-    setResult(res.data);
-  };
-
-  return (
-    <div className="container">
-      <h2>Image Analyzer</h2>
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-      <button onClick={analyze}>Analyze</button>
-
-      {result && <pre>{JSON.stringify(result, null, 2)}</pre>}
-    </div>
-  );
-}
+    const data = await res.json();
+    setResult(data.status);   // 🔴 THIS WAS MISSING
+  } catch (err) {
+    console.error(err);
+  }
+};
