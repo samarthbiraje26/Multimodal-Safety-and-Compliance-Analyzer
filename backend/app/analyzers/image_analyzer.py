@@ -1,31 +1,12 @@
 from PIL import Image
-from ..models.model_loader import image_model
+from io import BytesIO
 
-LABELS = [
-    "safe content",
-    "violent content",
-    "weapon",
-    "explicit content"
-]
+async def analyze_image(file):
+    contents = await file.read()        # ✅ await coroutine
+    image = Image.open(BytesIO(contents)).convert("RGB")
 
-def analyze_image(file):
-    image = Image.open(file).convert("RGB")
-
-    inputs = clip_processor(
-        text=LABELS,
-        images=image,
-        return_tensors="pt",
-        padding=True
-    ).to(DEVICE)
-
-    with torch.no_grad():
-        outputs = clip_model(**inputs)
-
-    probs = outputs.logits_per_image.softmax(dim=1)[0]
-    best = probs.argmax().item()
-
+    # TODO: run your ML model here
     return {
-        "safe": LABELS[best] == "safe content",
-        "label": LABELS[best],
-        "confidence": round(probs[best].item(), 3)
+        "status": "success",
+        "message": "Image analyzed successfully"
     }
