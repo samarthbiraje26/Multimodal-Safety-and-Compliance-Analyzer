@@ -1,19 +1,18 @@
 from PIL import Image
-from io import BytesIO
+import io
 
-def analyze_image(file_bytes: bytes):
-    image = Image.open(BytesIO(file_bytes)).convert("RGB")
+async def analyze_image(file):
+    # ✅ Read file correctly
+    contents = await file.read()
 
-    # 🔴 TEMP LOGIC (Replace with ML later)
+    # ✅ Convert bytes → image
+    image = Image.open(io.BytesIO(contents)).convert("RGB")
+
+    # 🔥 TEMP LOGIC (you can replace with ML later)
+    # Example condition
     width, height = image.size
 
     if width > 500:
-        return {
-            "status": "DANGER",
-            "message": "Danger detected in image"
-        }
-
-    return {
-        "status": "SAFE",
-        "message": "No danger detected"
-    }
+        return {"status": "DANGER"}
+    else:
+        return {"status": "SAFE"}
