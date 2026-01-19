@@ -25,3 +25,9 @@ whisper_processor = WhisperProcessor.from_pretrained("openai/whisper-small")
 whisper_model = WhisperForConditionalGeneration.from_pretrained(
     "openai/whisper-small"
 ).to(DEVICE)
+
+# Dummy example
+text_classifier = lambda x: {"status": "SAFE", "message": "No danger detected"}
+image_model = lambda x: {"status": "SAFE", "message": "No danger detected"}
+audio_model = lambda x: {"status": "SAFE", "message": "No danger detected"}
+video_model = lambda x: {"status": "SAFE", "message": "No danger detected"}
