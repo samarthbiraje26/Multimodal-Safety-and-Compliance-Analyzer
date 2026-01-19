@@ -1,6 +1,7 @@
 import cv2
 import torch
 from PIL import Image
+from ..models.model_loader import video_model
 from backend.app.models.model_loader import clip_model, clip_processor, DEVICE
 
 LABELS = [

@@ -1,6 +1,7 @@
 from PIL import Image
 import torch
 from backend.app.models.model_loader import clip_model, clip_processor, DEVICE
+from ..models.model_loader import image_model
 
 LABELS = [
     "safe content",
