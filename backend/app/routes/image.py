@@ -8,4 +8,4 @@ router = APIRouter(
 
 @router.post("/analyze")
 async def analyze(file: UploadFile = File(...)):
-    return analyze_image(file)
+    return await analyze_image(file)
