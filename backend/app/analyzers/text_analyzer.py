@@ -1,4 +1,4 @@
-from app.models.model_loader import text_classifier
+from backend.app.models.model_loader import text_classifier
 
 def analyze_text(text: str):
     result = text_classifier(text)[0]

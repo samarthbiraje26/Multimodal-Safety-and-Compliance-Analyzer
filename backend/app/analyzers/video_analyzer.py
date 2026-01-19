@@ -1,7 +1,7 @@
 import cv2
 import torch
 from PIL import Image
-from app.models.model_loader import clip_model, clip_processor, DEVICE
+from backend.app.models.model_loader import clip_model, clip_processor, DEVICE
 
 LABELS = [
     "safe content",

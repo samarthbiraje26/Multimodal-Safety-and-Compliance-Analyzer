@@ -1,11 +1,11 @@
 import torchaudio
 import torch
-from app.models.model_loader import (
+from backend.app.models.model_loader import (
     whisper_model,
     whisper_processor,
     DEVICE
 )
-from app.models.text_analyzer import analyze_text
+from app.analyzers.text_analyzer import analyze_text
 
 def analyze_audio(path):
     waveform, sample_rate = torchaudio.load(path)
