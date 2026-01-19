@@ -1,5 +1,5 @@
 from ..models.model_loader import audio_model
-from backend.app.models.model_loader import (
+from ..models.model_loader import (
     whisper_model,
     whisper_processor,
     DEVICE
