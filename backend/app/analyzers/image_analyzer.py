@@ -1,5 +1,4 @@
 from PIL import Image
-import torch
 from ..models.model_loader import image_model
 
 LABELS = [
